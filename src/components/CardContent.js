@@ -13,7 +13,6 @@ const CardContent = () => {
 
   const handleSwitch = () => {
     setBill(bill === false ? true : false);
-    console.log(bill);
   };
 
   return (
@@ -21,25 +20,24 @@ const CardContent = () => {
       <div className="content">
         <div className="content-sub">
           <div className="top">
-            <div>
+            <div className="pageviews">
               <span>100K Pageviews</span>
             </div>
             <div className="top-right">
               <h1>${parseFloat(price).toFixed(2)} </h1>
               <p> / month</p>
             </div>
+            <div className="volume">
+              <Slider
+                min="0"
+                max="32"
+                step="1"
+                value={price}
+                onChange={handleVolume}
+                className="volume-slider"
+              />
+            </div>
           </div>
-          <div className="volume">
-            <Slider
-              min="0"
-              max="32"
-              step="1"
-              value={price}
-              onChange={handleVolume}
-              className="volume-slider"
-            />
-          </div>
-
           <div className="bill">
             <div>
               <span>Monthly Billing</span>
@@ -52,7 +50,8 @@ const CardContent = () => {
               <span>Yearly Billing</span>
             </div>
             <div className="tag">
-              <span>25% discount</span>
+              <span className="desktop">25% discount</span>
+              <span className="mobile">- 25%</span>
             </div>
           </div>
         </div>
